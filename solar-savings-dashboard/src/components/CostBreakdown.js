@@ -9,8 +9,11 @@ const CostBreakdown = ({ costData }) => {
     taxCredits: 3000, // Example tax credits
   };
 
+  // Calculate net cost after tax credits
+  const netCostAfterTaxCredit = mockCostData.installationCost - mockCostData.taxCredits;
+
   return (
-    <Paper elevation={3} sx={{ p: 3, borderRadius: 2, width: 300 }}>
+    <Paper elevation={3} sx={{ p: 3, borderRadius: 2, width: '400px' }}>
       <Typography variant="h6" sx={{ mb: 2, fontWeight: 'bold', color: '#2e7d32' }}>
         Cost Breakdown
       </Typography>
@@ -29,8 +32,14 @@ const CostBreakdown = ({ costData }) => {
         </ListItem>
         <ListItem>
           <ListItemText
-            primary="Tax Credits"
-            secondary={`-$${mockCostData.taxCredits}`}
+            primary="Tax Credits Applied"
+            secondary={`$${mockCostData.taxCredits}`}
+          />
+        </ListItem>
+        <ListItem>
+          <ListItemText
+            primary="Net Cost After Tax Credit"
+            secondary={`$${netCostAfterTaxCredit}`}
           />
         </ListItem>
       </List>
